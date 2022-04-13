@@ -3,7 +3,12 @@ import Link from 'next/link';
 import React from 'react';
 import Projects from '../../pages/api/project';
 
-const ShoppingList = () => {
+interface IProps {
+  parentPage: string;
+  isShop?: boolean;
+}
+
+const ShoppingList = (props: IProps) => {
 
   return (
     <section className='wpo-shop-section section-padding'>
@@ -18,11 +23,11 @@ const ShoppingList = () => {
                   </div>
                   <div className='details'>
                     <h3>
-                      <Link href={`/shop/service/${item.id}`}>
+                      <Link href={`${props.parentPage}/${item.id}`}>
                         {item.subTitle}
                       </Link>
                     </h3>
-                    <span>starting from ${item.startingPrice}</span>
+                    {props.isShop && <span>starting from ${item.startingPrice}</span>}
                   </div>
                 </div>
               ))}

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Logo from '../../public/images/logo.svg';
 import Projects from '../../pages/api/project';
 import Link from 'next/link';
+import MenuItems from '../../pages/api/menu';
 
 interface IProps {
   ftClass: string;
@@ -22,15 +23,16 @@ const Footer = (props: IProps) => {
                 <div className='logo widget-title'>
                   <Link href='/'>
                     <a className='logo'>
-                      <Logo height='50px'/>
+                      <Logo height='50px' />
                     </a>
                     {/* <Image src={Logo} width={200} height={200} alt='' /> */}
                   </Link>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.
-                  Viverra laoreet ultrices donec placerat commodo elementum
-                  justo, consequat.
+                  We're a one-stop-shop for all your photography needs - from
+                  shooting to editing and marketing - so you can focus on what
+                  you do best. Our services are affordable, high-quality, and
+                  fast enough to meet even the tightest deadlines.
                 </p>
                 <ul>
                   <li>
@@ -62,31 +64,11 @@ const Footer = (props: IProps) => {
                   <h3>Our Services</h3>
                 </div>
                 <ul>
-                  <li>
-                    <Link href='/service-single'>
-                      Perfect Planning
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href='/service-single'>
-                      Profesional Design
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href='/service-single'>
-                      Best Interior
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href='/service-single'>
-                      Modern Furniture
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href='/service-single'>
-                      Complete Decoration
-                    </Link>
-                  </li>
+                 {MenuItems[2].children?.map(item => (
+                    <li key={item.link}>
+                      <Link href={item.link}>{item.title}</Link>
+                    </li>
+                 ))}
                 </ul>
               </div>
             </div>
@@ -98,10 +80,12 @@ const Footer = (props: IProps) => {
                 <div className='contact-ft'>
                   <ul>
                     <li>
-                      <i className='fi flaticon-location'></i>Toronto, ON, Canada
+                      <i className='fi flaticon-location'></i>Toronto, ON,
+                      Canada
                     </li>
                     <li>
-                      <i className='fi flaticon-telephone'></i>+ 1 (416) 433 3684
+                      <i className='fi flaticon-telephone'></i>+ 1 (416) 433
+                      3684
                     </li>
                     <li>
                       <i className='fi flaticon-email'></i>info@aglogia.com
@@ -119,10 +103,13 @@ const Footer = (props: IProps) => {
                 <ul className='d-flex'>
                   {Projects.slice(0, 6).map((project, pot) => (
                     <li key={pot}>
-                      <Link
-                        href={`/project-single/${project.id}`}
-                      >
-                        <Image src={project.pImg.src} width={project.pImg.width} height={project.pImg.height} alt='' />
+                      <Link href={`/project-single/${project.id}`}>
+                        <Image
+                          src={project.pImg.src}
+                          width={project.pImg.width}
+                          height={project.pImg.height}
+                          alt=''
+                        />
                       </Link>
                     </li>
                   ))}
@@ -139,18 +126,11 @@ const Footer = (props: IProps) => {
               <ul>
                 <li>
                   &copy; 2022 Arkio Template. Design By{' '}
-                  <Link href='/'>
-                    wpOceans
-                  </Link>
-                  . All Rights Reserved.
+                  <Link href='/'>wpOceans</Link>. All Rights Reserved.
                 </li>
                 <li>
-                  <Link href='/'>
-                    Terms of use |
-                  </Link>{' '}
-                  <Link href='/'>
-                    Privacy Environmental Policy
-                  </Link>
+                  <Link href='/'>Terms of use |</Link>{' '}
+                  <Link href='/'>Privacy Environmental Policy</Link>
                 </li>
               </ul>
             </div>
