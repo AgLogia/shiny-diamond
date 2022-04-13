@@ -31,7 +31,7 @@ class MyDocument extends Document {
           <link rel='manifest' href='%PUBLIC_URL%/manifest.json' />
           <meta
             name='description'
-            content='AG Logia is a software company in Canada. AG Logia offers professional services, develops custom applications for clients and provides consulting in the areas of web development, mobile development, software engineering and project management.'
+            content='We offer professional photography for real estate agents, real estate marketing companies and corporations. Our images will help your listings stand out among the competition.'
           />
         </Head>
         <body>

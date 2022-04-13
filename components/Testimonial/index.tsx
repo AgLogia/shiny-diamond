@@ -51,13 +51,13 @@ const testimonial = [
   {
     tsImg: ts1,
     Des: '“AgLogia Photography was a nice find for me. I had been looking for some good real estate photography and stumbled across their website. They had the most affordable prices and best quality photos. I booked them for an upcoming shoot and was very pleased with how everything went!”',
-    Title: 'Robert Henry',
+    Title: 'Jenefer Mei',
     Sub: 'Agent',
   },
   {
     tsImg: ts2,
     Des: `“I'm not a fan of real estate virtual tours. I never can feel like I am really there. AgLogia photography is different, though. The images are so vibrant and crisp. It's almost like you are walking down the street and you can even see the flowers blooming on the tree close to where it says for sale! Really loved it and would recommend this”`,
-    Title: 'Jenefer Haiway',
+    Title: 'Robert Wu',
     Sub: 'Agent',
   },
   {

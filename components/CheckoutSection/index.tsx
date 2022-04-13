@@ -10,15 +10,17 @@ import {
   DateTimePicker
 } from '@material-ui/pickers';
 import { observer } from 'mobx-react-lite';
-import React, { Fragment, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { RootStoreContext } from '../../stores/RootStore';
+import ConfirmDialog from '../Confirmdialog';
 
 const CheckoutSection = observer(() => {
   const { register, formState: { errors, isSubmitting }, handleSubmit, reset, control } = useForm();
   const store = useContext(RootStoreContext);
 
-  const [tabs, setExpanded] = React.useState({
+  const [isOpen, setOpen] = useState(false);
+  const [tabs, setExpanded] = useState({
     cupon: false,
     billing_adress: true,
     payment: true,
@@ -47,13 +49,13 @@ const CheckoutSection = observer(() => {
         discount: store.getDiscount(),
         taxes: store.getTax()
       }),
-    });
+    }).then(() => {store.clearStoredDate(); setOpen(true)});
 
     reset();
   };
 
   return (
-    <Fragment>
+    <>
       <Grid className='checkoutWrapper section-padding'>
         <Grid className='container' container>
           <Grid item md={6} xs={12}>
@@ -266,7 +268,8 @@ const CheckoutSection = observer(() => {
           </Grid>
         </Grid>
       </Grid>
-    </Fragment>
+      <ConfirmDialog open={isOpen} />
+    </>
   );
 });
 

@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MuiPickersUtilsProvider utils={LuxonUtils}>
       <Head>
-        <title>AG Logia - The Leader in Software Development Services</title>
+        <title>Expert Real Estate Photography Services in Ontario</title>
       </Head>
       <div className='App' id='scrool'>
         <Component {...pageProps} />

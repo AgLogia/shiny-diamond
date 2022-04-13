@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { makeAutoObservable } from 'mobx';
 import { CartItemStore } from './CartStore';
-import { makePersistable } from 'mobx-persist-store';
+import { clearPersistedStore, makePersistable } from 'mobx-persist-store';
 
 export class RootStore {
   cartItems: CartItemStore[] = [];
@@ -44,6 +44,10 @@ export class RootStore {
 
   public getTotal() {
     return (+this.getSubTotal() + +this.getTax()).toFixed(2);
+  }
+
+  public  async clearStoredDate() {
+    await clearPersistedStore(this);
   }
 }
 
