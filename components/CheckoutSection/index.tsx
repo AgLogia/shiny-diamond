@@ -1,73 +1,55 @@
-import React, { Fragment } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
+import Collapse from '@material-ui/core/Collapse';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import TextField from '@material-ui/core/TextField';
+import {
+  DateTimePicker
+} from '@material-ui/pickers';
+import { observer } from 'mobx-react-lite';
+import React, { Fragment, useContext } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { RootStoreContext } from '../../stores/RootStore';
 
-const CheckoutSection = () => {
-  // states
+const CheckoutSection = observer(() => {
+  const { register, formState: { errors, isSubmitting }, handleSubmit, reset, control } = useForm();
+  const store = useContext(RootStoreContext);
+
   const [tabs, setExpanded] = React.useState({
     cupon: false,
     billing_adress: true,
     payment: true,
   });
-  const [forms, setForms] = React.useState({
-    cupon_key: '',
-    fname: '',
-    lname: '',
-    country: '',
-    dristrict: '',
-    address: '',
-    post_code: '',
-    email: '',
-    phone: '',
-    note: '',
 
-    payment_method: 'cash',
-    card_type: '',
+  const onSubmit = async (data: any) => {
 
-    fname2: '',
-    lname2: '',
-    country2: '',
-    dristrict2: '',
-    address2: '',
-    post_code2: '',
-    email2: '',
-    phone2: '',
+    data['appointmentDate'] = new Date(data.appointment).toLocaleString('en', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    })
 
-    card_holder: '',
-    card_number: '',
-    cvv: '',
-    expire_date: '',
-  });
+    data['appointmentTime'] = new Date(data.appointment).toLocaleString('en', {
+      hour: '2-digit',
+      minute: '2-digit'
+    })
 
-  const [dif_ship, setDif_ship] = React.useState(false);
+    await fetch('/api/booking', {
+      method: 'post',
+      body: JSON.stringify({
+        info: data,
+        items: store.cartItems,
+        total: store.getTotal(),
+        subTotal: store.getSubTotal(),
+        discount: store.getDiscount(),
+        taxes: store.getTax()
+      }),
+    });
 
-  // // tabs handler
-  // function faqHandler(name) {
-  //   setExpanded({
-  //     cupon: false,
-  //     billing_adress: false,
-  //     payment: false,
-  //     [name]: !tabs[name],
-  //   });
-  // }
-
-  // forms handler
-  const changeHandler = (e: React.ChangeEvent<{ name?: string | undefined; value: unknown; }>) => {
-    // setForms({ ...forms, [e.target.name]: e.target.value });
+    reset();
   };
 
   return (
@@ -80,7 +62,6 @@ const CheckoutSection = () => {
                 <Button
                   className='collapseBtn'
                   fullWidth
-                  // onClick={() => faqHandler('billing_adress')}
                 >
                   Booking Information
                   <span>
@@ -93,84 +74,64 @@ const CheckoutSection = () => {
                 </Button>
                 <Collapse in={tabs.billing_adress} timeout='auto' unmountOnExit>
                   <Grid className='chCardBody'>
-                    <form className='cuponForm'>
+                    <form id='checkout-form' onSubmit={handleSubmit(onSubmit)} className='cuponForm'>
                       <Grid container spacing={3}>
                         <Grid item sm={6} xs={12}>
                           <TextField
                             fullWidth
-                            label='First Name'
-                            name='fname'
-                            value={forms.fname}
-                            onChange={(e) => changeHandler(e)}
+                            label='First Name*'
+                            {...register('name', { required: true })}
+                            name='name'
                             type='text'
                             InputLabelProps={{
                               shrink: true,
                             }}
                             className='formInput radiusNone'
                           />
+                          <p>
+                            {errors.name?.type === 'required' && 'Name is required'}
+                          </p>
                         </Grid>
                         <Grid item sm={6} xs={12}>
                           <TextField
                             fullWidth
-                            label='Last Name'
-                            name='lname'
-                            value={forms.lname}
-                            onChange={(e) => changeHandler(e)}
+                            label='Last Name*'
+                            {...register('lastName', { required: true })}
+                            name='lastName'
                             type='text'
                             InputLabelProps={{
                               shrink: true,
                             }}
                             className='formInput radiusNone'
                           />
-                        </Grid>
-                        <Grid item sm={6} xs={12}>
-                          <InputLabel id='demo-simple-select-filled-label'>
-                            Age
-                          </InputLabel>
-                          <FormControl
-                            className='formSelect'
-                            fullWidth
-                            variant='filled'
-                          >
-                            <Select
-                              labelId='demo-simple-select-filled-label'
-                              id='demo-simple-select-filled'
-                              value={forms.country}
-                              name='country'
-                              onChange={(e) => changeHandler(e)}
-                            >
-                              <MenuItem value=''>
-                                <em>None</em>
-                              </MenuItem>
-                              <MenuItem value={10}>Ten</MenuItem>
-                              <MenuItem value={20}>Twenty</MenuItem>
-                              <MenuItem value={30}>Thirty</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item sm={6} xs={12}>
-                          <TextField
-                            fullWidth
-                            label='Dristrict'
-                            name='dristrict'
-                            value={forms.dristrict}
-                            onChange={(e) => changeHandler(e)}
-                            type='text'
-                            InputLabelProps={{
-                              shrink: true,
-                            }}
-                            className='formInput radiusNone'
-                          />
+                          <p>
+                            {errors.lastName?.type === 'required' && 'Last Name is required'}
+                          </p>
                         </Grid>
                         <Grid item xs={12}>
                           <TextField
                             fullWidth
                             multiline
                             rows='3'
-                            label='Address'
+                            label='House Address*'
+                            {...register('address', { required: true })}
                             name='address'
-                            value={forms.address}
-                            onChange={(e) => changeHandler(e)}
+                            type='text'
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+                            className='formInput radiusNone'
+                          />
+                          <p>
+                            {errors.address?.type === 'required' && 'Address is required'}
+                          </p>
+                        </Grid>
+                        <Grid item sm={6} xs={12}>
+                          <TextField
+                            fullWidth
+                            label='Lock box'
+                            {...register('lockbox')}
+                            name='lockbox'
                             type='text'
                             InputLabelProps={{
                               shrink: true,
@@ -181,44 +142,59 @@ const CheckoutSection = () => {
                         <Grid item sm={6} xs={12}>
                           <TextField
                             fullWidth
-                            label='Post Code'
-                            name='post_code'
-                            value={forms.post_code}
-                            onChange={(e) => changeHandler(e)}
-                            type='text'
-                            InputLabelProps={{
-                              shrink: true,
-                            }}
-                            className='formInput radiusNone'
-                          />
-                        </Grid>
-                        <Grid item sm={6} xs={12}>
-                          <TextField
-                            fullWidth
-                            label='Email Adress'
+                            label='Email Address*'
+                            {...register('email', { required: true })}
                             name='email'
-                            value={forms.email}
-                            onChange={(e) => changeHandler(e)}
                             type='email'
                             InputLabelProps={{
                               shrink: true,
                             }}
                             className='formInput radiusNone'
                           />
+                          <p>
+                            {errors.email?.type === 'required' && 'Email is required'}
+                          </p>
                         </Grid>
                         <Grid item xs={12}>
                           <TextField
                             fullWidth
-                            label='Phone No'
+                            label='Phone No*'
+                            {...register('phone', { required: true })}
                             name='phone'
-                            value={forms.phone}
-                            onChange={(e) => changeHandler(e)}
                             type='text'
                             InputLabelProps={{
                               shrink: true,
                             }}
                             className='formInput radiusNone'
                           />
+                          <p>
+                            {errors.phone?.type === 'required' && 'Phone is required'}
+                          </p>
+                        </Grid>
+                        <Grid item xs={12}>
+
+                          <Controller
+                            control={control}
+                            name='appointment'
+                            defaultValue={new Date()}
+                            render={({ field }) => (
+                              <DateTimePicker 
+                                fullWidth 
+                                label='Appointment*' 
+                                value={new Date()} 
+                                onChange={(date) => field.onChange(date)}
+                                name="appointment"
+                                className='formInput radiusNone'
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                              />
+                          )}
+                          />
+                          
+                          <p>
+                            {errors.appointment?.type === 'required' && 'Appointment is required'}
+                          </p>
                         </Grid>
                         <Grid item xs={12}>
                           <TextField
@@ -226,9 +202,8 @@ const CheckoutSection = () => {
                             multiline
                             label='Order Notes'
                             placeholder='Note about your order'
+                            {...register('note')}
                             name='note'
-                            value={forms.note}
-                            onChange={(e) => changeHandler(e)}
                             type='text'
                             InputLabelProps={{
                               shrink: true,
@@ -248,35 +223,34 @@ const CheckoutSection = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Grid className='cartTotals'>
-                    <h4>Cart Total</h4>
+                    <h4>Services</h4>
                     <Table>
                       <TableBody>
-                        <TableRow>
-                          <TableCell>Polygonal Vasei x 8</TableCell>
-                          <TableCell align='right'>$25</TableCell>
+                      {store.cartItems.map((item, i) => (
+                        <TableRow key={i}>
+                          <TableCell>{item.desc}</TableCell>
+                          <TableCell align='right'>${(item.price * item.qnt).toFixed(2)}</TableCell>
                         </TableRow>
-                        <TableRow>
-                          <TableCell>Marble Side Table x 3</TableCell>
-                          <TableCell align='right'>$125</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell>Black Timber Chairs x 2</TableCell>
-                          <TableCell align='right'>$225</TableCell>
-                        </TableRow>
+                      ))}
+
                         <TableRow className='totalProduct'>
-                          <TableCell>Total product</TableCell>
-                          <TableCell align='right'>$464</TableCell>
+                          <TableCell>Discount</TableCell>
+                          <TableCell align='right'>-${store.getDiscount()}</TableCell>
                         </TableRow>
                         <TableRow>
                           <TableCell>Sub Price</TableCell>
-                          <TableCell align='right'>$2500</TableCell>
+                          <TableCell align='right'>${store.getSubTotal()}</TableCell>
+                        </TableRow>
+                        <TableRow className='totalProduct'>
+                          <TableCell>HST</TableCell>
+                          <TableCell align='right'>${store.getTax()}</TableCell>
                         </TableRow>
                         <TableRow>
                           <TableCell>
                             <b>Total Price</b>
                           </TableCell>
                           <TableCell align='right'>
-                            <b>$3200</b>
+                            <b>${store.getTotal()}</b>
                           </TableCell>
                         </TableRow>
                       </TableBody>
@@ -285,11 +259,15 @@ const CheckoutSection = () => {
                 </Grid>
               </Grid>
             </Grid>
+            
+            <Grid item className='text-end mx-4'>
+              <button form="checkout-form" disabled={isSubmitting} className='theme-btn mt-5'>Book now</button>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
     </Fragment>
   );
-};
+});
 
 export default CheckoutSection;

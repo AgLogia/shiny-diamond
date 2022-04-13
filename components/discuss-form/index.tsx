@@ -1,13 +1,20 @@
 import { useForm } from 'react-hook-form';
 
 const Discuss = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+    handleSubmit,
+    reset,
+  } = useForm();
 
-  const onSubmit = (data: any) => {
-    fetch('/api/contact', {
+  const onSubmit = async (data: any) => {
+    await fetch('/api/contact', {
       method: 'post',
       body: JSON.stringify(data),
     });
+
+    reset();
   };
 
   return (
@@ -20,7 +27,18 @@ const Discuss = () => {
           </p>
         </div>
         <div className='wpo-contact-form-area'>
-          <form method='post' onSubmit={handleSubmit(onSubmit)} className='form'>
+          {isSubmitSuccessful && (
+            <div className='row'>
+              <div className='col text-center mb-4'>
+                <h5>Message Sent!</h5>
+              </div>
+            </div>
+          )}
+          <form
+            method='post'
+            onSubmit={handleSubmit(onSubmit)}
+            className='form'
+          >
             <div className='row'>
               <div className='col col-lg-6 col-md-6 col-12'>
                 <div className='form-field'>
@@ -31,7 +49,9 @@ const Discuss = () => {
                     name='name'
                     placeholder='Your Name*'
                   />
-                  <p>{errors.name?.type === 'required' && "Name is required"}</p>
+                  <p>
+                    {errors.name?.type === 'required' && 'Name is required'}
+                  </p>
                 </div>
               </div>
               <div className='col col-lg-6 col-md-6 col-12'>
@@ -43,8 +63,9 @@ const Discuss = () => {
                     name='email'
                     placeholder='Your Email*'
                   />
-                  <p>{errors.email?.type === 'required' && "Email is required"}</p>
-
+                  <p>
+                    {errors.email?.type === 'required' && 'Email is required'}
+                  </p>
                 </div>
               </div>
               <div className='col col-lg-12 col-12'>
@@ -56,16 +77,24 @@ const Discuss = () => {
                   >
                     <option disabled>Services*</option>
                     <option>Real Estate Photography</option>
-                    <option>Complete Interior</option>
-                    <option>Exterior Design</option>
+                    <option>Virtual Tour</option>
+                    <option>Virtual Staging</option>
+                    <option>4K Video Tour</option>
+                    <option>Brochures and Features</option>
+                    <option>Drone Photos and Videos</option>
+                    <option>Agent Portrait</option>
+                    <option>Website Development</option>
                   </select>
-                  <p>{errors.service?.type === 'required' && "Please Select a Service"}</p>
+                  <p>
+                    {errors.service?.type === 'required' &&
+                      'Please Select a Service'}
+                  </p>
                 </div>
               </div>
               <div className='fullwidth col col-lg-12 col-12'>
                 <textarea
                   className='form-control'
-                  {...register('note')}
+                  {...register('message')}
                   name='note'
                   id='note'
                   placeholder='Message...'
@@ -73,7 +102,11 @@ const Discuss = () => {
               </div>
             </div>
             <div className='submit-area'>
-              <button type='submit' className='theme-btn-s4'>
+              <button
+                type='submit'
+                disabled={isSubmitting}
+                className='theme-btn-s4'
+              >
                 Send Massege
               </button>
             </div>

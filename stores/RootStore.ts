@@ -24,20 +24,26 @@ export class RootStore {
     this.cartItems.splice(index, 1);
   }
 
-  public getSubTotal() {
+  // PRODUCTS ONLY
+  public getProdTotal() {
     return this.cartItems.reduce((p, c) => p + c.price * c.qnt, 0).toFixed(2);
   }
-
+ 
   public getDiscount() {
-    return (+this.getSubTotal() * 0.2).toFixed(2);
+    return (+this.getProdTotal() * 0.2).toFixed(2);
+  }
+
+  //MINUS DISCOUNT
+  public getSubTotal() {
+    return (+this.getProdTotal() - +this.getDiscount()).toFixed(2);
   }
 
   public getTax() {
-    return ((+this.getSubTotal() - +this.getDiscount()) * 0.13).toFixed(2);
+    return ((+this.getSubTotal()) * 0.13).toFixed(2);
   }
 
   public getTotal() {
-    return (+this.getSubTotal() - +this.getDiscount() + +this.getTax()).toFixed(2);
+    return (+this.getSubTotal() + +this.getTax()).toFixed(2);
   }
 }
 

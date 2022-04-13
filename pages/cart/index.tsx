@@ -96,21 +96,18 @@ const CartPage = observer(() => {
                           </a>
                         </Link>
                       </li>
-                      {/* <li>
-                        <button type='submit'>Update Cart</button>
-                      </li> */}
                     </ul>
                   </div>
                   <div className='cart-product-list'>
                     <ul>
                       <li>
-                        Total product<span>{store.cartItems.length}</span>
+                        Total Services<span>{store.getProdTotal()}</span>
+                      </li>
+                      <li>
+                        Discount ({store.discount}%)<span>-${store.getDiscount()}</span>
                       </li>
                       <li>
                         Sub Price<span>${store.getSubTotal()}</span>
-                      </li>
-                      <li>
-                        Discount({store.discount}%)<span>${store.getDiscount()}</span>
                       </li>
                       <li>
                         Tax<span>${store.getTax()}</span>

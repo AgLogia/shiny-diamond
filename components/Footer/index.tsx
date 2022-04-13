@@ -98,15 +98,13 @@ const Footer = (props: IProps) => {
                 <div className='contact-ft'>
                   <ul>
                     <li>
-                      <i className='fi flaticon-location'></i>68D, Belsion Town
-                      2365 <br /> Fna city, LH 3656, USA
+                      <i className='fi flaticon-location'></i>Toronto, ON, Canada
                     </li>
                     <li>
-                      <i className='fi flaticon-telephone'></i>+ 8 (123) 123 456
-                      789 <br />+ 8 (123) 123 456 789
+                      <i className='fi flaticon-telephone'></i>+ 1 (416) 433 3684
                     </li>
                     <li>
-                      <i className='fi flaticon-email'></i>arkio@gmail.com
+                      <i className='fi flaticon-email'></i>info@aglogia.com
                     </li>
                   </ul>
                 </div>

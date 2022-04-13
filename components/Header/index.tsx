@@ -105,7 +105,7 @@ const Header = observer((props: IProps) => {
                         </div>
                         <div className='header-right-sec'>
                           <div className='project-widget widget'>
-                            <h3>Our Latest Projects</h3>
+                            <h3>Our Best Services</h3>
                             <ul>
                               {Projects.slice(0, 6).map((project, pot) => (
                                 <li key={pot}>
@@ -130,17 +130,14 @@ const Header = observer((props: IProps) => {
                             <div className='contact-ft'>
                               <ul>
                                 <li>
-                                  <i className='fi flaticon-location'></i>68D,
-                                  Belsion Town 2365 <br /> Fna city, LH 3656,
-                                  USA
+                                  <i className='fi flaticon-location'></i>Toronto, ON, Canada
                                 </li>
                                 <li>
-                                  <i className='fi flaticon-telephone'></i>+ 8
-                                  (123) 123 456 789 <br />+ 8 (123) 123 456 789
+                                  <i className='fi flaticon-telephone'></i>+ 1 (416) 433 3684
                                 </li>
                                 <li>
                                   <i className='fi flaticon-email'></i>
-                                  arkio@gmail.com
+                                  info@aglogia.com
                                 </li>
                               </ul>
                             </div>
