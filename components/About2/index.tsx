@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import abimg from '/public/images/about.jpg';
+import abimg from '/public/images/about.webp';
 
 const About2 = () => {
   return (

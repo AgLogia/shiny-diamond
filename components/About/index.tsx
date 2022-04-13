@@ -1,5 +1,5 @@
 import React from 'react';
-import abimg from '../../public/images/about4.jpg';
+import abimg from '../../public/images/about4.webp';
 import abimg2 from '../../public/images/about-shape.jpg';
 import Image from 'next/image';
 import { Link } from 'react-scroll';

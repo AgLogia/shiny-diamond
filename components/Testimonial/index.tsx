@@ -51,7 +51,7 @@ const testimonial = [
   {
     tsImg: ts1,
     Des: '“AgLogia Photography was a nice find for me. I had been looking for some good real estate photography and stumbled across their website. They had the most affordable prices and best quality photos. I booked them for an upcoming shoot and was very pleased with how everything went!”',
-    Title: 'Jenefer Mei',
+    Title: 'Jenefer Xia',
     Sub: 'Agent',
   },
   {

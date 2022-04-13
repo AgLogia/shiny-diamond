@@ -3,9 +3,9 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import hero1 from '../../public/images/slider/slide-1.jpg';
-import hero3 from '../../public/images/slider/slide-4.jpg';
-import hero2 from '../../public/images/slider/slide-3.jpg';
+import hero1 from '../../public/images/slider/slide-1.webp';
+import hero3 from '../../public/images/slider/slide-4.webp';
+import hero2 from '../../public/images/slider/slide-3.webp';
 
 
 var settings = {
