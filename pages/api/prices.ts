@@ -10,7 +10,7 @@ export interface IPrice {
 const PriceList: IPrice[] = [
   { id: 1, title: 'BASIC', description: 'The basic package', rate: 329.99, features: ['Real Estate HDR Photos', '4K Video Tour'] },
   { id: 2, title: 'PREMIUM', description: 'The Most popular option, you have all you need to sell your house', rate: 659.99, features: ['Everything in BASIC', '360 Virtual Tour', 'Feature Sheets'] },
-  { id: 3, title: 'ADVANCED', description: 'If you don\'t want to miss anything', rate: 999.99, features: ['Everything in PREMIUM', 'Drone Photos', 'Website'] },
+  { id: 3, title: 'ADVANCED', description: 'If you don\'t want to miss anything', rate: 999.99, features: ['Everything in PREMIUM', 'Drone Photos', '8 Virtual staging pictures'] },
 ];
 
 export const VideoPriceList: IPrice[] = [

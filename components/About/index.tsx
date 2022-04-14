@@ -2,7 +2,7 @@ import React from 'react';
 import abimg from '../../public/images/about4.webp';
 import abimg2 from '../../public/images/about-shape.jpg';
 import Image from 'next/image';
-import { Link } from 'react-scroll';
+import Link from 'next/link';
 
 const About = () => {
   const ClickHandler = () => {
@@ -40,8 +40,10 @@ const About = () => {
                 <li>We work with some of the most successful businesses.</li>
               </ul>
               <div className='btns'>
-                <Link to='/about' onClick={ClickHandler} className='theme-btn'>
-                  Discover More
+                <Link href='/about' >
+                  <a className='theme-btn'>
+                    Discover More
+                  </a>
                 </Link>
               </div>
             </div>

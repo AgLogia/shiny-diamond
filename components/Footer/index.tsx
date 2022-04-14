@@ -64,11 +64,11 @@ const Footer = (props: IProps) => {
                   <h3>Our Services</h3>
                 </div>
                 <ul>
-                 {MenuItems[2].children?.map(item => (
+                  {MenuItems[2].children?.map((item) => (
                     <li key={item.link}>
                       <Link href={item.link}>{item.title}</Link>
                     </li>
-                 ))}
+                  ))}
                 </ul>
               </div>
             </div>
@@ -125,12 +125,13 @@ const Footer = (props: IProps) => {
             <div className='col col-xs-12'>
               <ul>
                 <li>
-                  &copy; 2022 Arkio Template. Design By{' '}
-                  <Link href='/'>wpOceans</Link>. All Rights Reserved.
+                  &copy; 2022 AgLogia Photography. Designed by
+                  <a href='https://www.aglogia.com' target='_blank' rel='noreferrer'> AgLogia</a> All Rights
+                  Reserved.
                 </li>
                 <li>
-                  <Link href='/'>Terms of use |</Link>{' '}
-                  <Link href='/'>Privacy Environmental Policy</Link>
+                  <Link href='/'>Terms of use | </Link>
+                  <Link href='/privacy'>Privacy Environmental Policy</Link>
                 </li>
               </ul>
             </div>

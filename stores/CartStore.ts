@@ -7,7 +7,8 @@ export type CartItemType =
   | 'video'
   | 'droneVideo'
   | 'brochures'
-  | 'website';
+  | 'website'
+  | 'package';
 
 export class CartItemStore {
   type: CartItemType;

@@ -1,10 +1,12 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import PriceList from '../../pages/api/prices';
+import React, { useContext, useEffect, useState } from 'react';
+import PriceList, { IPrice } from '../../pages/api/prices';
 import SectionTitle2 from '../SectionTitle2';
 import Slider from '@material-ui/core/Slider';
 import { withStyles } from '@material-ui/core';
 import useWindowSize from '../../hooks/use-window-size';
+import { RootStoreContext } from '../../stores/RootStore';
+import { CartItemStore } from '../../stores/CartStore';
 
 interface IProps {
   pClass: string;
@@ -101,6 +103,7 @@ const Pricing = (props: IProps) => {
   const [size, setSize] = useState<number>(1);
   const [isMobile, setMobile] = useState<boolean>(false);
   const { width } = useWindowSize();
+  const cartStorage = useContext(RootStoreContext);
 
   useEffect(() => {
     setMobile(width <= 768);
@@ -109,6 +112,10 @@ const Pricing = (props: IProps) => {
   const getMarks = () => {
     return isMobile ? marks.map((m) => ({ value: m.value })) : marks;
   };
+
+  const addToCart = (item: IPrice) => {
+    cartStorage.addItemToCart(new CartItemStore('package', item.title + ' Package' , 1, item.rate + ((size-1) * 50), 0, valueLabelFormat(size)))
+  }
 
   return (
     <section className={`wpo-pricing-section section-padding ${props.pClass}`}>
@@ -152,8 +159,7 @@ const Pricing = (props: IProps) => {
                     </div>
                     <div className='wpo-pricing-text'>
                       <h2>
-                        ${pricing.rate}
-                        <span>/per m²</span>
+                        ${pricing.rate + ((size-1) * 50)}
                       </h2>
                       <p>{pricing.description}</p>
                     </div>
@@ -165,7 +171,7 @@ const Pricing = (props: IProps) => {
                           <li key={i}>- {f}</li>
                         ))}
                       </ul>
-                      <Link href={pricing.link || ''}>Choose Plan</Link>
+                      <a onClick={() => addToCart(pricing)}>Choose Plan</a>
                     </div>
                   </div>
                 </div>

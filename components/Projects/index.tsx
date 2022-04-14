@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Link } from 'react-scroll';
+import Link from 'next/link';
 import Projects from '../../pages/api/project';
 import SectionTitle2 from '../SectionTitle2';
 
@@ -29,8 +29,7 @@ const ProjectSection = () => {
                           <div className='wpo-project-text'>
                             <h2>
                               <Link
-                                onClick={ClickHandler}
-                                to={`/project-single/${project.id}`}
+                                href={`/services/${project.id}`}
                               >
                                 {project.title}
                               </Link>
