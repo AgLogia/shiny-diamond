@@ -6,7 +6,7 @@ import Scrollbar from '../../components/Scrollbar';
 const PrivacyPage = () => (
   <>
     <Navbar hclass={'wpo-header-style-2'} />
-    <PageTitle pageTitle={'FAQ'} pageSub={'FAQ'} />
+    <PageTitle pageTitle={'Privacy Policy'} pageSub={'Privacy Policy'} />
     <div className='container mx-auto my-5'>
       <h1>Privacy Policy</h1>
       <p>Last updated: January 08, 2022</p>
