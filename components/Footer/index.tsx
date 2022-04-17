@@ -130,8 +130,8 @@ const Footer = (props: IProps) => {
                   Reserved.
                 </li>
                 <li>
-                  <Link href='/'>Terms of use | </Link>
-                  <Link href='/privacy'>Privacy Environmental Policy</Link>
+                  <Link href='/terms'>Terms of use</Link> |
+                  <Link href='/privacy'> Privacy Environmental Policy</Link>
                 </li>
               </ul>
             </div>
