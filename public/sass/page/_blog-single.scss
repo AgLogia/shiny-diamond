@@ -94,7 +94,7 @@
       font-size: calc-rem-value(35);
       margin: -0.22em 0 0.7em;
       line-height: 1.3em;
-      font-family: $heading-font;
+      font-family: 'Jost';
       font-weight: 600;
 
       @include media-query(991px) {
@@ -223,7 +223,7 @@
       align-items: center;
 
       > span {
-        font-family: $heading-font;
+        font-family: 'Jost';
         color: $heading-color;
         font-weight: 600;
         display: inline-block;
@@ -311,7 +311,7 @@
     }
 
     .author-name {
-      font-family: $heading-font;
+      font-family: 'Jost';
       font-size: 24px;
       font-size: calc-rem-value(24);
       font-weight: 600;
@@ -446,7 +446,7 @@
     }
 
     .post-name {
-      font-family: $heading-font;
+      font-family: 'Jost';
       font-size: 18px;
       font-size: calc-rem-value(18);
       color: $heading-color;
@@ -536,7 +536,7 @@
 
     .comments-meta {
       h4 {
-        font-family: $heading-font;
+        font-family: 'Jost';
         font-size: 18px;
         font-size: calc-rem-value(18);
         color: $heading-color;
@@ -561,7 +561,7 @@
     }
 
     .comment-reply-link {
-      font-family: $heading-font;
+      font-family: 'Jost';
       font-size: 14px;
       font-size: calc-rem-value(14);
       font-weight: 600;
@@ -659,7 +659,7 @@
     }
 
     .form-submit input {
-      font-family: $heading-font;
+      font-family: 'Jost';
       max-width: 180px;
       background-color: $theme-primary-color;
       color: $white;

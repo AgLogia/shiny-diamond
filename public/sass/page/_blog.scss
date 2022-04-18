@@ -102,7 +102,7 @@
       line-height: 1.2em;
       font-weight: 600;
       margin: -0.27em 0 0.7em;
-      font-family: $heading-font;
+      font-family: 'Jost';
       font-weight: 600;
 
       @include media-query(991px) {
@@ -137,7 +137,7 @@
       text-decoration: underline;
       color: $text-color;
       text-transform: uppercase;
-      font-family: $heading-font;
+      font-family: 'Jost';
       font-size: 15px;
       font-weight: 600;
 
