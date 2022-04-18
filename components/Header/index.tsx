@@ -31,6 +31,13 @@ const Header = observer((props: IProps) => {
 
   return (
     <header id='header'>
+      <div className='row'>
+        <div className='col text-center wpo-header-style-2'>
+          <h6 className='text-light my-3'>20% OF DISCOUNT FOR ALL THE SERVICES (THIS MONTH ONLY)</h6>
+        </div>
+      </div>
+
+
       <div className={`wpo-site-header ${props.hclass}`}>
         <nav className='navigation navbar navbar-expand-lg navbar-light'>
           <div className='container-fluid'>
