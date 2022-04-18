@@ -879,7 +879,7 @@
         color: $dark-gray;
         font-weight: 500;
         position: relative;
-        font-family: $heading-font;
+        font-family: 'Jost';
 
         @media (max-width: 1870px) {
           padding: 35px 18px;
@@ -910,7 +910,7 @@
         overflow: hidden;
         font-weight: 500;
         transition: all 0.5s;
-        font-family: $heading-font;
+        font-family: 'Jost';
 
         &:after {
           position: absolute;
