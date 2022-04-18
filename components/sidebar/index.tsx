@@ -56,7 +56,7 @@ const ServiceSidebar = () => {
             By signing up you agree to our <Link href='#'>Privacy Policy</Link>
           </span>
         </div>
-        <div className='widget wpo-instagram-widget'>
+        {/* <div className='widget wpo-instagram-widget'>
           <div className='widget-title'>
             <h3>Instagram</h3>
           </div>
@@ -80,7 +80,7 @@ const ServiceSidebar = () => {
               <Image src={ins6.src} width={ins6.width} height={ins6.height} alt='' />
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
