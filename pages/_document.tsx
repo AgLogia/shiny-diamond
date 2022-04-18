@@ -26,6 +26,18 @@ class MyDocument extends Document {
             crossOrigin='anonymous'
           ></link>
 
+          <link
+            href='https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap'
+            rel='stylesheet'
+            type='text/css'
+          />
+          
+          <link
+            href='https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Secular+One&display=swap'
+            rel='stylesheet'
+            type='text/css'
+          />
+
           <link rel='apple-touch-icon' href='logo192.png' />
 
           <link rel='manifest' href='%PUBLIC_URL%/manifest.json' />
