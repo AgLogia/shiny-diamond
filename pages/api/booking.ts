@@ -817,18 +817,14 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const data = {
     to: 'info@aglogia.com',
     from: 'info@aglogia.com',
-    subject: `New message from ${body.name}`,
+    subject: `Thank you for booking with us!`,
     text: 'message',
     html: message,
   };
   
-  await mail.send(data)
-    .then(() => {
-      console.log('Email sent')
-    })
-    .catch((error: any) => {
-      console.error(error)
-    });
+  await mail.send(data);
+  data.to = body.info.email;
+  await mail.send(data);
   
   res.status(200).json({ status: 'OK' });
 };
