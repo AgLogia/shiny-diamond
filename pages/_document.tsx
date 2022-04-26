@@ -18,6 +18,20 @@ class MyDocument extends Document {
         <Head>
           <title>Expert Real Estate Photography Services in Ontario</title>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <script async src='https://www.googletagmanager.com/gtag/js?id=AW-10840716317'></script>
+          <script async src='https://www.googletagmanager.com/gtag/js?id=G-ZXLCMMQS2T'></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZXLCMMQS2T');
+            `,
+            }}
+          />
+
           <meta name='theme-color' content='#000000' />
           <link
             href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
@@ -31,7 +45,7 @@ class MyDocument extends Document {
             rel='stylesheet'
             type='text/css'
           />
-          
+
           <link
             href='https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Secular+One&display=swap'
             rel='stylesheet'
