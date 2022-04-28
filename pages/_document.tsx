@@ -28,21 +28,10 @@ class MyDocument extends Document {
             gtag('js', new Date());
 
             gtag('config', 'G-ZXLCMMQS2T');
+            gtag('config', 'AW-10840716317');
             `,
             }}
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-            
-              gtag('config', 'AW-10840716317');
-            `,
-            }}
-          />
-
 
           <meta name='theme-color' content='#000000' />
           <link
