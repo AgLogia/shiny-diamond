@@ -8,6 +8,13 @@ import Scrollbar from '../../components/Scrollbar';
 const CheckoutPage = () => {
   return (
     <Fragment>
+       <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            gtag('event', 'conversion', {'send_to': 'AW-10840716317/rJguCNyf2LQDEJ3ooLEo'});
+        `,
+        }}
+      />
       <Navbar hclass={'wpo-header-style-2'} />
       <PageTitle pageTitle={'Booking'} pageSub={'Booking'} />
       <CheckoutSection />
