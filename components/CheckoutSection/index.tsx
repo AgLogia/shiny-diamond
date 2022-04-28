@@ -183,7 +183,7 @@ const CheckoutSection = observer(() => {
                               <DateTimePicker 
                                 fullWidth 
                                 label='Appointment*' 
-                                value={new Date()} 
+                                value={field.value} 
                                 onChange={(date) => field.onChange(date)}
                                 name="appointment"
                                 className='formInput radiusNone'
