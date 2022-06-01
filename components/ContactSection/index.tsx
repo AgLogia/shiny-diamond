@@ -45,7 +45,7 @@ const ContactSection = () => {
                     </div>
                     <div className='office-info-text'>
                       <h2>Call Now</h2>
-                      <p>+1 (416) 433-3684</p>
+                      <p>+1 (416) 557-3220</p>
                       <br/>
                     </div>
                   </div>

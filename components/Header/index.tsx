@@ -140,7 +140,7 @@ const Header = observer((props: IProps) => {
                                   <i className='fi flaticon-location'></i>Toronto, ON, Canada
                                 </li>
                                 <li>
-                                  <i className='fi flaticon-telephone'></i>+ 1 (416) 433 3684
+                                  <i className='fi flaticon-telephone'></i>+ 1 (416) 557-3220
                                 </li>
                                 <li>
                                   <i className='fi flaticon-email'></i>
