@@ -18,8 +18,14 @@ class MyDocument extends Document {
         <Head>
           <title>Expert Real Estate Photography Services in Ontario</title>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
-          <script async src='https://www.googletagmanager.com/gtag/js?id=AW-10840716317'></script>
-          <script async src='https://www.googletagmanager.com/gtag/js?id=G-ZXLCMMQS2T'></script>
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=AW-10840716317'
+          ></script>
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-ZXLCMMQS2T'
+          ></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -49,6 +55,12 @@ class MyDocument extends Document {
 
           <link
             href='https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Secular+One&display=swap'
+            rel='stylesheet'
+            type='text/css'
+          />
+
+          <link
+            href='https://fonts.googleapis.com/css2?family=Mukta&display=swap'
             rel='stylesheet'
             type='text/css'
           />
