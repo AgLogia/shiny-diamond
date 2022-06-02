@@ -60,7 +60,7 @@ class MyDocument extends Document {
           />
 
           <link
-            href='https://fonts.googleapis.com/css2?family=Mukta&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'
             rel='stylesheet'
             type='text/css'
           />
